@@ -1,0 +1,3 @@
+﻿User-agent: *
+Disallow: /error
+Sitemap: https://raffle.cascadiangamers.org/sitemap
