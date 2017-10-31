@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraLife2017.Web", "ExtraLife2017.Web\ExtraLife2017.Web.csproj", "{28C4D2C5-AC0B-4E45-BDB6-36F5A2E91EF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtraLife2017.Web", "ExtraLife2017.Web\ExtraLife2017.Web.csproj", "{28C4D2C5-AC0B-4E45-BDB6-36F5A2E91EF6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0EB50CF0-7614-43EB-81C0-7A11E2979D68}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
