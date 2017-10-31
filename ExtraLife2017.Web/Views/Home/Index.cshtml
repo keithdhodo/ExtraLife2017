@@ -106,3 +106,52 @@
         </ul>
     </div>
 </div>
+
+
+<div class="row">
+    <div id="prizes-10"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#prizes-10').jtable({
+            title: 'Student List',
+            actions: {
+                listAction: '@Url.Action("GetPrizes", "Home")',
+            },
+            fields: {
+                _id: {
+                    title: 'Id',
+                    width: '8%',
+                    key: true,
+                    create: false,
+                    edit: false
+                },
+                Price: {
+                    title: 'Name',
+                    width: '21%'
+                },
+                //ProductCode: {
+                //    title: 'Email address',
+                //    list: false
+                //},
+                //ProductName: {
+                //    title: 'User Password',
+                //    type: 'password',
+                //    list: false
+                //},
+                //ReleaseDate: {
+                //    title: 'Record date',
+                //    width: '15%',
+                //    type: 'date',
+                //    displayFormat: 'yy-mm-dd',
+                //    create: false,
+                //    edit: false,
+                //    sorting: false
+                //}
+            }
+        });
+
+        $('#prizes-10').jtable('load');
+    });
+</script>

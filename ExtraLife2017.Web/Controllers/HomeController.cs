@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ExtraLife2017.Web.Models;
 using ExtraLife2017.Web.Utilities;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 
 namespace ExtraLife2017.Web.Controllers
 {
@@ -42,6 +44,41 @@ namespace ExtraLife2017.Web.Controllers
 
             var xml = siteMapBuilder.ToString();
             return Content(xml, "text/xml");
+        }
+
+        [HttpPost]
+        [Route("Prizes_Read")]
+        public IActionResult GetPrizes()
+        {
+            var prizes = new List<Prize>()
+            {
+                new Prize()
+                {
+                    _id = Guid.NewGuid(),
+                    Description = "Prize A",
+                    Price = 10.25m,
+                    PrizeId = 1,
+                    ProductCode = "A",
+                    ProductName = "Hello",
+                    ReleaseDate = DateTime.Today
+                },
+                new Prize()
+                {
+                    _id = Guid.NewGuid(),
+                    Description = "Prize B",
+                    Price = 12.25m,
+                    PrizeId = 2,
+                    ProductCode = "B",
+                    ProductName = "Good Bye",
+                    ReleaseDate = DateTime.Today.AddDays(-1)
+                },
+            };
+
+            return Json(new
+            {
+                Result = "OK",
+                Records = prizes
+            });
         }
     }
 }
