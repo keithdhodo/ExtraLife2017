@@ -82,25 +82,19 @@
             sorting: true,
             defaultSorting: 'ProductName ASC',
             actions: {
-                listAction: '@Url.Action("GetPrizes", "Home")',
+                listAction: '@Url.Action("GetPrizes", "Home", new { tier = 10 })',
             },
             fields: {
-                _id: {
+                PrizeId: {
                     title: 'Id',
                     key: true,
                     visibility: 'hidden'
                 },
-                ProductName: {
+                PrizeName: {
                     title: 'Prize',
                 },
                 Description: {
                     title: 'Description',
-                },
-                Price: {
-                    title: 'Price',
-                },
-                ReleaseDate: {
-                    title: 'Release Date'
                 }
             }
         });
@@ -113,25 +107,19 @@
             sorting: true,
             defaultSorting: 'ProductName ASC',
             actions: {
-                listAction: '@Url.Action("GetPrizes", "Home")',
+                listAction: '@Url.Action("GetPrizes", "Home", new { tier = 50 })',
             },
             fields: {
-                _id: {
+                PrizeId: {
                     title: 'Id',
                     key: true,
                     visibility: 'hidden'
                 },
-                ProductName: {
+                PrizeName: {
                     title: 'Prize',
                 },
                 Description: {
                     title: 'Description',
-                },
-                Price: {
-                    title: 'Price',
-                },
-                ReleaseDate: {
-                    title: 'Release Date'
                 }
             }
         });

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using ExtraLife2017.Web.Logic;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,7 @@ namespace ExtraLife2017.Web.Controllers
         {
             _cache = cache;
             _config = appSettings.Value;
-            _prizeService = new PrizeServiceWrapper(appSettings.Value.PrizeServiceUri);
+            _prizeService = new PrizeServiceWrapper(appSettings.Value.PrizeServiceUri, appSettings.Value.PrizeServiceApiKey);
         }
 
         [Route("")]
@@ -53,7 +54,7 @@ namespace ExtraLife2017.Web.Controllers
         }
 
         [HttpPost]
-        [Route("Prizes_Read")]
+        [Route("Prizes_Read/{tier}")]
         public async Task<IActionResult> GetPrizes(int tier)
         {
             IEnumerable<Prize> prizes;
@@ -74,7 +75,7 @@ namespace ExtraLife2017.Web.Controllers
                 json = Json(new
                 {
                     Result = "OK",
-                    Records = prizes
+                    Records = prizes.Where(x => x.Tier == tier)
                 });
             }
             catch (Exception e)

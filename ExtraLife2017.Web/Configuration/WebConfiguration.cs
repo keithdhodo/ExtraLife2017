@@ -10,5 +10,6 @@ namespace ExtraLife2017.Web
     {
         public string Domain { get; set; }
         public string PrizeServiceUri { get; set; }
+        public string PrizeServiceApiKey { get; set; }
     }
 }

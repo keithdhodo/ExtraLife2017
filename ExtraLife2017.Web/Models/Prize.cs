@@ -5,19 +5,21 @@ namespace ExtraLife2017.Web.Models
 {
     public class Prize
     {
-        [JsonProperty("_id")]
-        public Guid _id { get; set; }
+        //[JsonProperty("_id")]
+        //public Guid Id { get; set; }
         [JsonProperty("description")]
         public string Description { get; set; }
-        [JsonProperty("price")]
-        public decimal Price { get; set; }
-        [JsonProperty("productCode")]
-        public string ProductCode { get; set; }
         [JsonProperty("prizeId")]
         public int PrizeId { get; set; }
-        [JsonProperty("productName")]
-        public string ProductName { get; set; }
-        [JsonProperty("releaseDate")]
-        public DateTime ReleaseDate { get; set; }
+        [JsonProperty("prizeName")]
+        public string PrizeName { get; set; }
+        [JsonProperty("dateAdded")]
+        public DateTime DateAdded { get; set; }
+        [JsonProperty("tier")]
+        public int Tier { get; set; }
+        [JsonProperty("displayDate")]
+        public DateTime DisplayDate { get; set; }
+        [JsonProperty("wonBy")]
+        public string WonBy { get; set; }
     }
 }

@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Extra Life 2017</title>
 
-
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/lib/jtable/lib/themes/metro/blue/jtable.min.css" />
+    <link rel="stylesheet" href="~/lib/jtable/lib/themes/metro/darkorange/jtable.min.css" />
+    <link href="~/lib/kendo-ui-core/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/lib/kendo-ui-core/styles/kendo.materialblack.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.min.css" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/jtable/lib/jquery.jtable.min.js"></script>
+    <script src="~/lib/kendo-ui-core/js/kendo.ui.core.min.js"></script>
     <script src="~/js/site.min.js"></script>
 </head>
 <body>
     @Html.Partial("Partials/_HeaderPartial")
-    <div class="container body-content">
+    <div class="body-content container">
         @RenderBody()
-        <hr />
-        @Html.Partial("Partials/_FooterPartial")
     </div>
+    @Html.Partial("Partials/_FooterPartial")
 </body>
 </html>
