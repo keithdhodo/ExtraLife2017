@@ -5,23 +5,10 @@ body {
     background-image: url("../images/bluegridpattern_icons.jpg");
     background-repeat: repeat;
 }
-
 .body-content {
     background-color: #FCFCFC;
     min-height: 100%;
 }
-
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
 #footer {
     color: #FCFCFC;
     background: #333333;
