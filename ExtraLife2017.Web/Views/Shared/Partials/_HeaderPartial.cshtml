@@ -1,47 +1,14 @@
-﻿<style>
-    #menu h2 {
-        font-size: 1em;
-        text-transform: uppercase;
-        padding: 5px 10px;
-    }
+﻿<div style="background-color: #333333;">
+    <ul id="menu" class="container" style="margin: 0 auto;">
+        <li>
+            <a href="@Url.Action("Index", "Home")"><img src="~/images/controller_white.png" style="height: 45px;"/></a>
+        </li>
+        <li disabled="disabled">
+            Raffle Drawing
+        </li>
+    </ul>
+</div>
 
-    #template img {
-        margin: 5px 20px 0 0;
-        float: left;
-    }
-
-    #template {
-        width: 380px;
-    }
-
-        #template ol {
-            float: left;
-            margin: 0 0 0 30px;
-            padding: 10px 10px 0 10px;
-        }
-
-        #template:after {
-            content: ".";
-            display: block;
-            height: 0;
-            clear: both;
-            visibility: hidden;
-        }
-
-        #template .k-button {
-            float: left;
-            clear: left;
-            margin: 5px 0 5px 12px;
-        }
-</style>
-<ul id="menu">
-    <li>
-        <a href="@Url.Action("Index", "Home")">Home</a>
-    </li>
-    <li disabled="disabled">
-        News
-    </li>
-</ul>
 <script>
     $(document).ready(function () {
         $("#menu").kendoMenu();
