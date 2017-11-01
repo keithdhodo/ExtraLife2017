@@ -71,7 +71,7 @@ namespace ExtraLife2017.Web.Controllers
                     _cache.Set(key, prizes, _cacheRefresh);
                 }
 
-                var selectedPrizes = prizes.Where(x => x.Tier == tier);
+                var selectedPrizes = prizes.Where(x => (x.Tier == tier));
 
                 // sort the tier out
                 json = Json(new
