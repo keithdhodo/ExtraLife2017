@@ -1,18 +1,49 @@
-﻿    <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ExtraLife2017.Web</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+﻿<style>
+    #menu h2 {
+        font-size: 1em;
+        text-transform: uppercase;
+        padding: 5px 10px;
+    }
+
+    #template img {
+        margin: 5px 20px 0 0;
+        float: left;
+    }
+
+    #template {
+        width: 380px;
+    }
+
+        #template ol {
+            float: left;
+            margin: 0 0 0 30px;
+            padding: 10px 10px 0 10px;
+        }
+
+        #template:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        #template .k-button {
+            float: left;
+            clear: left;
+            margin: 5px 0 5px 12px;
+        }
+</style>
+<ul id="menu">
+    <li>
+        <a href="@Url.Action("Index", "Home")">Home</a>
+    </li>
+    <li disabled="disabled">
+        News
+    </li>
+</ul>
+<script>
+    $(document).ready(function () {
+        $("#menu").kendoMenu();
+    });
+</script>
