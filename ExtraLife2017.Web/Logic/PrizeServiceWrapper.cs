@@ -26,7 +26,7 @@ namespace ExtraLife2017.Web.Logic
             var serviceUri = _baseServiceUri + PrizeEndpoint;
             serviceUri = AddApiCode(serviceUri);
 
-            var response = (await serviceUri.GetJsonAsync<IEnumerable<Prize>>()).Where(x => x.DisplayDate <= DateTime.Today);
+            var response = (await serviceUri.GetJsonAsync<IEnumerable<Prize>>()).Where(x => (x.DateToDisplay <= DateTime.UtcNow));
 
             return response;
         }
