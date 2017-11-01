@@ -2,7 +2,7 @@
     height: 100%;
 }
 body {
-    background-image: url("../images/bluegridpattern_icons.jpg");
+    background-image: url("../images/gaming-pattern.png");
     background-repeat: repeat;
 }
 .body-content {
@@ -12,6 +12,9 @@ body {
 #footer {
     color: #FCFCFC;
     background: #333333;
+}
+.prize-grid {
+    color: #333333 !important;
 }
 .prize-grid select {
     color: #333333 !important;
