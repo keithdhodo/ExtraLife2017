@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using ExtraLife2017.Web.Logic;
 using Microsoft.AspNetCore.Mvc;
 using ExtraLife2017.Web.Models;
 using ExtraLife2017.Web.Utilities;
@@ -11,13 +15,18 @@ namespace ExtraLife2017.Web.Controllers
     [Route("")]
     public class HomeController : Controller
     {
+        private const string CacheRegion = "HOME";
+        private TimeSpan _cacheRefresh = TimeSpan.FromMinutes(30);
+
         private readonly IMemoryCache _cache;
         private readonly AppSettings _config;
+        private readonly IPrizeServiceWrapper _prizeService;
 
         public HomeController(IOptions<AppSettings> appSettings, IMemoryCache cache)
         {
             _cache = cache;
             _config = appSettings.Value;
+            _prizeService = new PrizeServiceWrapper(appSettings.Value.PrizeServiceUri, appSettings.Value.PrizeServiceApiKey);
         }
 
         [Route("")]
@@ -42,6 +51,43 @@ namespace ExtraLife2017.Web.Controllers
 
             var xml = siteMapBuilder.ToString();
             return Content(xml, "text/xml");
+        }
+
+        [HttpPost]
+        [Route("Prizes_Read/{tier}")]
+        public async Task<IActionResult> GetPrizes(int tier)
+        {
+            IEnumerable<Prize> prizes;
+            JsonResult json;
+
+            try
+            {
+                var key = string.Format("{0}-{1}", CacheRegion, "GetPrizes");
+                _cache.TryGetValue(key, out prizes);
+
+                if (prizes == null)
+                {
+                    prizes = await _prizeService.GetPrizes();
+                    _cache.Set(key, prizes, _cacheRefresh);
+                }
+
+                // sort the tier out
+                json = Json(new
+                {
+                    Result = "OK",
+                    Records = prizes.Where(x => x.Tier == tier)
+                });
+            }
+            catch (Exception e)
+            {
+                json = Json(new
+                {
+                    Result = "ERROR",
+                    Message = e.Message
+                });
+            }
+
+            return json;
         }
     }
 }
