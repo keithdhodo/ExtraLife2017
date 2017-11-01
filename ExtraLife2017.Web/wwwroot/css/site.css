@@ -13,3 +13,6 @@ body {
     color: #FCFCFC;
     background: #333333;
 }
+.prize-grid select {
+    color: #333333 !important;
+}
