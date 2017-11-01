@@ -5,8 +5,8 @@ namespace ExtraLife2017.Web.Models
 {
     public class Prize
     {
-        //[JsonProperty("_id")]
-        //public Guid Id { get; set; }
+        [JsonProperty("_id")]
+        public Guid Id { get; set; }
         [JsonProperty("description")]
         public string Description { get; set; }
         [JsonProperty("prizeId")]

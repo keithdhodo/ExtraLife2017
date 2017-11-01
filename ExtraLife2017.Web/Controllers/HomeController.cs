@@ -55,7 +55,7 @@ namespace ExtraLife2017.Web.Controllers
 
         [HttpPost]
         [Route("Prizes_Read/{tier}")]
-        public async Task<IActionResult> GetPrizes(int tier)
+        public async Task<IActionResult> GetPrizes(int tier, int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
             IEnumerable<Prize> prizes;
             JsonResult json;
@@ -71,11 +71,14 @@ namespace ExtraLife2017.Web.Controllers
                     _cache.Set(key, prizes, _cacheRefresh);
                 }
 
+                var selectedPrizes = prizes.Where(x => x.Tier == tier);
+
                 // sort the tier out
                 json = Json(new
                 {
                     Result = "OK",
-                    Records = prizes.Where(x => x.Tier == tier)
+                    Records = selectedPrizes.Skip(jtStartIndex - 1).Take(jtPageSize),
+                    TotalRecordCount = selectedPrizes.Count()
                 });
             }
             catch (Exception e)
