@@ -60,6 +60,12 @@ namespace ExtraLife2017.Web.Controllers
             IEnumerable<Prize> prizes;
             JsonResult json;
 
+            const string prizeName = "prizeName";
+            const string notes = "notes";
+            const string restriction = "restriction";
+            const string donor = "donor";
+            const string wonBy = "wonBy";
+
             try
             {
                 var key = string.Format("{0}-{1}", CacheRegion, "GetPrizes");
@@ -72,6 +78,73 @@ namespace ExtraLife2017.Web.Controllers
                 }
 
                 var selectedPrizes = prizes.Where(x => (x.Tier == tier));
+
+                if (!string.IsNullOrEmpty(jtSorting))
+                {
+                    var splitSort = jtSorting.Split(' ');
+
+                    if (splitSort.Length == 2)
+                    {
+                        var isAsc = splitSort[1].Equals("ASC");
+                        var isDesc = splitSort[1].Equals("DESC");
+
+                        switch (splitSort[0])
+                        {
+                            case prizeName:
+                                if (isAsc)
+                                {
+                                    selectedPrizes = selectedPrizes.OrderBy(x => x.PrizeName);
+                                }
+                                else if (isDesc)
+                                {
+                                    selectedPrizes = selectedPrizes.OrderByDescending(x => x.PrizeName);
+                                }
+                                break;
+                            case notes:
+                                if (isAsc)
+                                {
+                                    selectedPrizes = selectedPrizes.OrderBy(x => x.Notes);
+                                }
+                                else if (isDesc)
+                                {
+                                    selectedPrizes = selectedPrizes.OrderByDescending(x => x.Notes);
+                                }
+                                break;
+                            case restriction:
+                                if (isAsc)
+                                {
+                                    selectedPrizes = selectedPrizes.OrderBy(x => x.Restriction);
+                                }
+                                else if (isDesc)
+                                {
+                                    selectedPrizes = selectedPrizes.OrderByDescending(x => x.Restriction);
+                                }
+                                break;
+                            case donor:
+                                if (isAsc)
+                                {
+                                    selectedPrizes = selectedPrizes.OrderBy(x => x.Donor);
+                                }
+                                else if (isDesc)
+                                {
+                                    selectedPrizes = selectedPrizes.OrderByDescending(x => x.Donor);
+                                }
+                                break;
+                            case wonBy:
+                                if (isAsc)
+                                {
+                                    selectedPrizes = selectedPrizes.OrderBy(x => x.WonBy);
+                                }
+                                else if (isDesc)
+                                {
+                                    selectedPrizes = selectedPrizes.OrderByDescending(x => x.WonBy);
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
 
                 // sort the tier out
                 json = Json(new
