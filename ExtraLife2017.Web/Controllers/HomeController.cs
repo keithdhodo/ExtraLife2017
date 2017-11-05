@@ -16,7 +16,7 @@ namespace ExtraLife2017.Web.Controllers
     public class HomeController : Controller
     {
         private const string CacheRegion = "HOME";
-        private TimeSpan _cacheRefresh = TimeSpan.FromMinutes(30);
+        private TimeSpan _cacheRefresh = TimeSpan.FromSeconds(1);
 
         private readonly IMemoryCache _cache;
         private readonly AppSettings _config;
